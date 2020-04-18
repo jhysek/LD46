@@ -3,9 +3,13 @@ extends KinematicBody2D
 export var SPEED = 8000
 export var GRAVITY = 2000
 
+var direction = 1
+
 var paused = false
 var dead = false
 var motion = Vector2(0, 0)
+var turntimer = 0
+var prevx = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,11 +20,27 @@ func _physics_process(delta):
 	motion.y += GRAVITY * delta
 
 	if not dead and not paused:
-		motion.x = SPEED * delta
+		motion.x = direction * SPEED * delta
 		
 	if dead:
 		motion.x = lerp(motion.x, 0, 2 * delta)
+
 	motion = move_and_slide(motion, Vector2.UP)
+
+	if dead:
+		return
+		
+	if (direction == 1 and prevx < position.x) or (direction == -1 and prevx > position.x):
+		prevx = position.x
+		turntimer = 0
+	else:
+		turntimer += delta
+		
+	
+	if turntimer > 0.5:
+		turntimer = 0
+		scale.x *= -1
+		direction *= -1
 	
 func die():
 	$AnimationPlayer.play("Death")
