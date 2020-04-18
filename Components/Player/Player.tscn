@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Components/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Components/Player/assets/head.png" type="Texture" id=3]
@@ -7,6 +7,34 @@
 [ext_resource path="res://Components/Player/assets/body_back.png" type="Texture" id=6]
 [ext_resource path="res://Components/Player/assets/ear_front.png" type="Texture" id=7]
 [ext_resource path="res://Components/Player/assets/leg.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visuals/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.329877, 3.4822, 1 ),
+"update": 0,
+"values": [ Vector2( 51.9597, -46.1355 ), Vector2( 63.4494, -192.351 ), Vector2( 155.423, 15.6553 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visuals/Head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -117.624, -279.201 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Run"
@@ -173,7 +201,7 @@ texture = ExtResource( 8 )
 offset = Vector2( 8.36015, 6.56375 )
 
 [node name="Head" type="Sprite" parent="Visuals"]
-position = Vector2( 59.5087, -39.6725 )
+position = Vector2( 51.9597, -46.1355 )
 texture = ExtResource( 3 )
 
 [node name="EarBack" type="Sprite" parent="Visuals/Head"]
@@ -191,6 +219,7 @@ offset = Vector2( -11.1699, -18.9123 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Run"
 playback_speed = 2.0
+anims/Death = SubResource( 3 )
 anims/Run = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

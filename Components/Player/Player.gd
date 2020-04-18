@@ -4,6 +4,7 @@ export var SPEED = 8000
 export var GRAVITY = 2000
 
 var paused = false
+var dead = false
 var motion = Vector2(0, 0)
 
 # Called when the node enters the scene tree for the first time.
@@ -13,5 +14,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	motion.y += GRAVITY * delta
-	motion.x = SPEED * delta
+
+	if not dead and not paused:
+		motion.x = SPEED * delta
+		
+	if dead:
+		motion.x = lerp(motion.x, 0, 2 * delta)
 	motion = move_and_slide(motion, Vector2.UP)
+	
+func die():
+	$AnimationPlayer.play("Death")
+	dead = true	
