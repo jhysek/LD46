@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Components/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Components/Player/assets/head.png" type="Texture" id=3]
@@ -34,6 +34,22 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -117.624, -279.201 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Dissolve"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visuals:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -220,8 +236,10 @@ offset = Vector2( -11.1699, -18.9123 )
 autoplay = "Run"
 playback_speed = 2.0
 anims/Death = SubResource( 3 )
+anims/Dissolve = SubResource( 4 )
 anims/Run = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 14.7233, -37.8122 )
 shape = SubResource( 1 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

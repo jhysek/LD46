@@ -8,7 +8,7 @@ var direction = 1
 var paused = false
 var dead = false
 var motion = Vector2(0, 0)
-var turntimer = 0
+var turntimer = -1
 var prevx = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -34,9 +34,9 @@ func _physics_process(delta):
 		prevx = position.x
 		turntimer = 0
 	else:
+		prevx = position.x
 		turntimer += delta
 		
-	
 	if turntimer > 0.5:
 		turntimer = 0
 		scale.x *= -1
@@ -45,3 +45,14 @@ func _physics_process(delta):
 func die():
 	$AnimationPlayer.play("Death")
 	dead = true	
+	
+func dissolve():
+	$AnimationPlayer.play("Dissolve")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Dissolve":
+		queue_free()
+		
+func reached_exit():
+	queue_free()

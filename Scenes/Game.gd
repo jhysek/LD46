@@ -5,12 +5,21 @@ var Line = preload("res://Components/Line/Line.tscn")
 var drawing = false
 var draw_points = []
 var effect
+export var bunnies = 1
 
 onready var line = $DrawLine
 onready var cam  = $Player/Camera2D
 
 func _ready():	
 	set_process_input(true)
+
+func next_level():
+	$AnimationPlayer.play("NextLevel")
+
+func reached_exit():
+	bunnies -= 1
+	if bunnies <= 0:
+		next_level()
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -26,7 +35,7 @@ func _input(event):
 			draw_points.append(pos)
 			line.add_point(pos)
 			var l = Line.instance()
-			add_child(l)
+			$Obstacles.add_child(l)
 			l.draw(draw_points)
 			$DrawLine.clear_points()
 			draw_points.clear()
@@ -36,4 +45,7 @@ func _input(event):
 		var pos = get_global_mouse_position()
 		draw_points.append(pos)
 		line.add_point(pos)
-			
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "NextLevel":
+		LevelSwitcher.next_level()

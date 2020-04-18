@@ -1,10 +1,12 @@
 extends StaticBody2D
 
+var shape
+var line
 
 func draw(points):
-	var line = $Line
+	line = $Line
 	$CollisionShape.shape = ConcavePolygonShape2D.new()
-	var shape = $CollisionShape.shape
+	shape = $CollisionShape.shape
 	
 	line.clear_points()
 	
@@ -33,3 +35,23 @@ func draw(points):
 			prev_point = segment 
 	
 	shape.segments = PoolVector2Array(connected_segments)
+	$Timer.start()
+	
+	
+func remove_first_segment():
+	if shape.segments.size() > 0:
+		line.remove_point(0)
+		var segs = shape.segments
+		
+		segs.remove(0)
+		segs.remove(0)
+		shape.segments = segs
+		
+		$Timer.start()
+	else: 
+		queue_free()
+		
+	
+func _on_Timer_timeout():
+	$Timer.wait_time = 0.1
+	remove_first_segment()
