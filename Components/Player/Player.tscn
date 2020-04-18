@@ -1,18 +1,198 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Components/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Components/Player/assets/head.png" type="Texture" id=3]
+[ext_resource path="res://Components/Player/assets/body_font.png" type="Texture" id=4]
+[ext_resource path="res://Components/Player/assets/ear_back.png" type="Texture" id=5]
+[ext_resource path="res://Components/Player/assets/body_back.png" type="Texture" id=6]
+[ext_resource path="res://Components/Player/assets/ear_front.png" type="Texture" id=7]
+[ext_resource path="res://Components/Player/assets/leg.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Run"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visuals:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 4.43196, -9.7058, 4.43196, 28.5152, 4.43196 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1.33847, -58.5587 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visuals/BodyBack/LegFront:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 96.5436 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visuals/BodyBack/LegBack:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 78.4631 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visuals/Head/EarBack:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -59.4495 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visuals/Head/EarFront:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -8.65697, -73.3083 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visuals/Head:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 59.5087, -39.6725 ), Vector2( 63.3539, -38.3358 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Visuals/Head:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Visuals/BodyFront/LegFont:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -12.0258, 36.2316, 24.209 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Visuals/BodyFront/LegBack:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -8.79383, -51.32, 14.0082, 5.45164 ]
+}
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 31.9302
+radius = 95.5653
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="Visuals" type="Node2D" parent="."]
+rotation = 0.0773524
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 5.79357e-05, 0.536137 )
-scale = Vector2( 0.396872, 0.405248 )
-texture = ExtResource( 1 )
+[node name="BodyFront" type="Sprite" parent="Visuals"]
+texture = ExtResource( 4 )
+
+[node name="LegFont" type="Sprite" parent="Visuals/BodyFront"]
+position = Vector2( 26.8051, 25.5315 )
+texture = ExtResource( 8 )
+offset = Vector2( 11.1955, 6.25084 )
+
+[node name="LegBack" type="Sprite" parent="Visuals/BodyFront"]
+show_behind_parent = true
+position = Vector2( 43.3873, 14.1313 )
+rotation = -0.153481
+texture = ExtResource( 8 )
+offset = Vector2( 15.341, 9.35999 )
+
+[node name="BodyBack" type="Sprite" parent="Visuals"]
+position = Vector2( -12.5773, -1.4144 )
+texture = ExtResource( 6 )
+offset = Vector2( -25.3678, 0.604507 )
+
+[node name="LegFront" type="Sprite" parent="Visuals/BodyBack"]
+position = Vector2( -59.4883, 32.4732 )
+texture = ExtResource( 8 )
+offset = Vector2( 13.8875, 9.6729 )
+
+[node name="LegBack" type="Sprite" parent="Visuals/BodyBack"]
+show_behind_parent = true
+position = Vector2( -39.1061, 34.2006 )
+texture = ExtResource( 8 )
+offset = Vector2( 8.36015, 6.56375 )
+
+[node name="Head" type="Sprite" parent="Visuals"]
+position = Vector2( 59.5087, -39.6725 )
+texture = ExtResource( 3 )
+
+[node name="EarBack" type="Sprite" parent="Visuals/Head"]
+show_behind_parent = true
+position = Vector2( -0.575775, -24.6157 )
+texture = ExtResource( 5 )
+offset = Vector2( -8.96838, -14.8661 )
+
+[node name="EarFront" type="Sprite" parent="Visuals/Head"]
+position = Vector2( -20.9579, -13.2155 )
+rotation = -0.151093
+texture = ExtResource( 7 )
+offset = Vector2( -11.1699, -18.9123 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Run"
+playback_speed = 2.0
+anims/Run = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 14.7233, -37.8122 )
+shape = SubResource( 1 )

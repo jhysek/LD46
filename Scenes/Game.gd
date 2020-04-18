@@ -4,6 +4,7 @@ var Line = preload("res://Components/Line/Line.tscn")
 
 var drawing = false
 var draw_points = []
+var effect
 
 onready var line = $DrawLine
 onready var cam  = $Player/Camera2D
