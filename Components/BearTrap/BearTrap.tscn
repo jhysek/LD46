@@ -9,6 +9,8 @@ extents = Vector2( 65.5163, 16.3493 )
 
 [node name="BearTrap" type="Area2D"]
 position = Vector2( -1129.5, -122.418 )
+collision_layer = 31
+collision_mask = 31
 script = ExtResource( 2 )
 
 [node name="Opened" type="Sprite" parent="."]

@@ -4,10 +4,11 @@ export var show_after = 0
 export var hide_after = 0
 export var text = ""
 
-
 func _ready():
 	$Label.modulate = Color(1, 1, 1, 0)
 	$Label.text = text.replace("|", "\n")
+
+func start():
 	if show_after > 0:
 		$Timer.wait_time = show_after
 		$Timer.start()	
@@ -16,7 +17,7 @@ func _ready():
 
 	if hide_after > 0:
 		$HideTimer.wait_time = hide_after
-		$HideTimer.start()
+		$HideTimer.start()	
 		
 func fadein():
 	$AnimationPlayer.play("FadeIn")

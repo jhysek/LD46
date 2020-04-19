@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Components/Exit/Exit.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/white.png" type="Texture" id=5]
 [ext_resource path="res://Components/Fadelabel/Label.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/environment.png" type="Texture" id=7]
+[ext_resource path="res://Components/Clouds/Cloud.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -163,6 +164,7 @@ tracks/1/keys = {
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+paused = false
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -193,18 +195,6 @@ current = true
 zoom = Vector2( 1.7, 1.7 )
 smoothing_enabled = true
 
-[node name="Label" parent="." instance=ExtResource( 6 )]
-position = Vector2( -1289.89, -391.827 )
-show_after = 1
-hide_after = 6
-text = "Bunny is cute..."
-
-[node name="Label2" parent="." instance=ExtResource( 6 )]
-position = Vector2( -896.039, -497.124 )
-show_after = 5
-hide_after = 10
-text = "... but not a good swimmer"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "FadeIn"
 anims/FadeIn = SubResource( 12 )
@@ -221,4 +211,20 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Cloud" parent="." instance=ExtResource( 8 )]
+
+[node name="Labels" type="Node2D" parent="."]
+
+[node name="Label" parent="Labels" instance=ExtResource( 6 )]
+position = Vector2( -1289.89, -391.827 )
+show_after = 1
+hide_after = 6
+text = "Bunny is cute..."
+
+[node name="Label2" parent="Labels" instance=ExtResource( 6 )]
+position = Vector2( -896.039, -497.124 )
+show_after = 5
+hide_after = 10
+text = "... but not a good swimmer"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

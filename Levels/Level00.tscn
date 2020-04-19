@@ -175,6 +175,8 @@ tracks/1/keys = {
 [node name="Game" type="Node2D"]
 modulate = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
+allow_drawing = false
+paused = false
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -200,16 +202,6 @@ smoothing_enabled = true
 
 [node name="Exit" parent="." instance=ExtResource( 3 )]
 
-[node name="Label" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1329.38, -326.016 )
-hide_after = 5
-text = "Once upon a time, |there was a bunny..."
-
-[node name="Label2" parent="." instance=ExtResource( 4 )]
-position = Vector2( -624.695, -709.743 )
-show_after = 7
-text = "... and it only wanted to go home"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "FadeIn"
 anims/FadeIn = SubResource( 12 )
@@ -226,4 +218,16 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Labels" type="Node2D" parent="."]
+
+[node name="Label" parent="Labels" instance=ExtResource( 4 )]
+position = Vector2( -1329.38, -326.016 )
+hide_after = 5
+text = "Once upon a time, |there was a bunny..."
+
+[node name="Label2" parent="Labels" instance=ExtResource( 4 )]
+position = Vector2( -624.695, -709.743 )
+show_after = 7
+text = "... and it only wanted to go home"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

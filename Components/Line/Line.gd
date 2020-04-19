@@ -35,7 +35,7 @@ func draw(points):
 			prev_point = segment 
 	
 	shape.segments = PoolVector2Array(connected_segments)
-	$Timer.start()
+
 	
 	
 func remove_first_segment():
@@ -51,6 +51,8 @@ func remove_first_segment():
 	else: 
 		queue_free()
 		
+func start_fading():
+	$Timer.start()
 	
 func _on_Timer_timeout():
 	$Timer.wait_time = 0.1

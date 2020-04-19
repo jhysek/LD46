@@ -6,6 +6,11 @@ var levels = [
 	"res://Levels/Level01.tscn",
 	"res://Levels/Level02.tscn",
 	"res://Levels/Level03.tscn",
+	"res://Levels/Level04.tscn",
+	"res://Levels/Level05.tscn",
+	"res://Levels/Level06.tscn",
+	"res://Levels/Level07.tscn",
+	"res://Levels/Level08.tscn",
 	"res://Scenes/Menu.tscn"
 	]
 	
@@ -17,9 +22,12 @@ func _input(event):
 		restart_level()
 
 func restart_level():
+	get_tree().reload_current_scene()
+	
+func start_level():
 	get_tree().change_scene(levels[current_level])
 	
 func next_level():
 	current_level += 1
 	if current_level < levels.size():
-		restart_level()
+		start_level()

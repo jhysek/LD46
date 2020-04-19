@@ -16,6 +16,7 @@ func _ready():
 #	pass
 
 
-func _on_Stone_body_entered(body):
-	if body.is_in_group("Player") and (linear_velocity.x > 10 or linear_velocity.y > 10):
+func _on_KillZone_body_entered(body):
+	if body.is_in_group("Player"):
 		body.die()
+
