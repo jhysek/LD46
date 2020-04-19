@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cink.wav-bb79d2040d26dad52f8b382293b8ca95.sample"
+
+[deps]
+
+source_file="res://Assets/cink.wav"
+dest_files=[ "res://.import/cink.wav-bb79d2040d26dad52f8b382293b8ca95.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

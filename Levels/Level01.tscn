@@ -183,6 +183,7 @@ paused = false
 [node name="DrawLine" type="Line2D" parent="."]
 
 [node name="Cloud" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0.352941 )
 position = Vector2( -1325.74, -556.413 )
 
 [node name="TileMap" type="TileMap" parent="."]

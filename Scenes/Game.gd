@@ -10,6 +10,7 @@ export var bunnies = 1
 export var allow_drawing = true
 
 export var paused = true
+var ended = false
 
 onready var line = $DrawLine
 onready var cam  = $Player/Camera2D
@@ -27,8 +28,6 @@ func _ready():
 	else:
 		start_game(false)
 	set_process_input(true)
-
-
 
 
 func start_game(start_anim = true):
@@ -49,6 +48,7 @@ func start_game(start_anim = true):
 		
 func failed():
 	$AnimationPlayer.play("RestartLabel")
+	ended = true
 	if has_node("Players"):
 		for player in $Players.get_children():
 			if player.is_in_group("Player") and !player.dead:
@@ -62,9 +62,13 @@ func reached_exit():
 	if bunnies <= 0:
 		next_level()
 
-func _input(event):
+func _input(event):	
+	if ended and Input.is_action_just_pressed("ui_accept"):
+		LevelSwitcher.start_level()
+		
 	if paused and Input.is_action_just_released("ui_accept"):
 		start_game()
+
 		
 	if allow_drawing and event is InputEventMouseButton:
 		var pos = get_global_mouse_position()

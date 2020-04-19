@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/clap.wav-69982eec791acf2e9ff86e7c9e9d9d8d.sample"
+
+[deps]
+
+source_file="res://Components/BearTrap/clap.wav"
+dest_files=[ "res://.import/clap.wav-69982eec791acf2e9ff86e7c9e9d9d8d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -5,7 +5,6 @@ var cloud_scale = 0.6
 var delay = 0
 
 func _ready():
-	position = Vector2(randi() % 2000 - 1000, -300 - randi() % 150 - 200)
 	randomize_cloud()
 	delay = 0
 	set_process(true)

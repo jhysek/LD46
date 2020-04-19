@@ -192,7 +192,7 @@ position = Vector2( -77.6817, -167.09 )
 texture = ExtResource( 6 )
 
 [node name="DeathZone" parent="." instance=ExtResource( 10 )]
-position = Vector2( -1469.46, -32.707 )
+position = Vector2( -1470.7, -68.5451 )
 
 [node name="Labels" type="Node2D" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

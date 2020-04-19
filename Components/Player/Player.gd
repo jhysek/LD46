@@ -22,9 +22,11 @@ func _ready():
 		
 func pause():
 	$AnimationPlayer.stop()
+	$Sfx/Run.stop()
 	paused = true
 	
 func go():
+	$Sfx/Run.play()
 	$AnimationPlayer.play("Run")
 	paused = false
 
@@ -35,6 +37,7 @@ func _physics_process(delta):
 	if is_on_floor() or is_on_wall():
 		if airtime > 0.5:
 			die()
+			$Sfx/Fall.play()
 		airtime = 0
 	else:
 		airtime += delta
@@ -51,7 +54,7 @@ func _physics_process(delta):
 	if dead or paused:
 		return
 		
-	if (direction == 1 and round(prevx) < round(position.x)) or (direction == -1 and round(prevx) > round(position.x)):
+	if (direction == 1 and 1 + round(prevx) < round(position.x) + 1) or (direction == -1 and round(prevx) > round(position.x) + 1):
 		prevx = position.x
 		turntimer = 0
 	else:
@@ -62,16 +65,21 @@ func _physics_process(delta):
 		turntimer = 0
 		scale.x *= -1
 		direction *= -1
+		$Sfx/EE.pitch_scale = 1 + (randi() % 20) / 100.0
+		$Sfx/EE.play()
 	
-func die():
+func die(silent = false):
 	if not dead:
 		dead = true
-		$AnimationPlayer.play("Death")
+		$Sfx/Death.play()
+		if not silent:
+		  $AnimationPlayer.play("Death")
 		var ghost = Ghost.instance()
 		get_parent().add_child(ghost)
 		ghost.position = position
 		get_node("/root/Game").failed()
-	
+		$Sfx/Run.stop()
+				
 func dissolve():
 	$AnimationPlayer.play("Dissolve")
 
@@ -81,4 +89,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		queue_free()
 		
 func reached_exit():
+	$Sfx/Hooray.play()
+	hide()
+	$FreeTimer.start()
+
+
+func _on_FreeTimer_timeout():
 	queue_free()

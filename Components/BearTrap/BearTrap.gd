@@ -9,8 +9,10 @@ func deactivate():
 
 func _on_BearTrap_body_entered(body):
 	if active and body.is_in_group("Player"):
+		$Clap.play()
 		deactivate()
 		body.die()
 		
 	if active and body.is_in_group("TrapActivate"):
+		$Clap.play()
 		deactivate()

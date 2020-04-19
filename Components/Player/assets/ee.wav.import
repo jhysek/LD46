@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ee.wav-f4af676c0808f78613085427a2dc0ede.sample"
+
+[deps]
+
+source_file="res://Components/Player/assets/ee.wav"
+dest_files=[ "res://.import/ee.wav-f4af676c0808f78613085427a2dc0ede.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

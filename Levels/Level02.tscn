@@ -1,10 +1,10 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Components/Exit/Exit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/DeathZone/DeathZone.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/white.png" type="Texture" id=5]
+[ext_resource path="res://Components/GameUI/AnimationPlayer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Components/Fadelabel/Label.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/environment.png" type="Texture" id=7]
 [ext_resource path="res://Components/Clouds/Cloud.tscn" type="PackedScene" id=8]
@@ -119,50 +119,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 } ]
 0/z_index = 0
 
-[sub_resource type="Animation" id=12]
-resource_name = "FadeIn"
-length = 8.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/CanvasLayer/TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.329877, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=13]
-resource_name = "NextLevel"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimationPlayer/CanvasLayer/TextureRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 2, 2.9 ),
-"transitions": PoolRealArray( 2.2974, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
-}
-
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 paused = false
@@ -201,24 +157,11 @@ current = true
 zoom = Vector2( 1.7, 1.7 )
 smoothing_enabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "FadeIn"
-anims/FadeIn = SubResource( 12 )
-anims/NextLevel = SubResource( 13 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="AnimationPlayer"]
-
-[node name="TextureRect" type="TextureRect" parent="AnimationPlayer/CanvasLayer"]
-modulate = Color( 0, 0, 0, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AnimationPlayer" parent="." instance=ExtResource( 5 )]
 
 [node name="Cloud" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0.290196 )
+position = Vector2( -1304.87, -682.945 )
 
 [node name="Labels" type="Node2D" parent="."]
 
@@ -230,7 +173,12 @@ text = "Bunny is cute..."
 
 [node name="Label2" parent="Labels" instance=ExtResource( 6 )]
 position = Vector2( -896.039, -497.124 )
-show_after = 5
+show_after = 4
 hide_after = 10
 text = "... but not a good swimmer"
+
+[node name="Cloud2" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0.294118 )
+position = Vector2( -130.722, -572.036 )
+scale = Vector2( 0.48052, 0.513883 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

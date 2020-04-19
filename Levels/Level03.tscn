@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Components/Exit/Exit.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Components/Fadelabel/Label.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/environment.png" type="Texture" id=7]
 [ext_resource path="res://Components/Stone/Stone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/bg.png" type="Texture" id=9]
+[ext_resource path="res://Components/Clouds/Cloud.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -123,6 +125,11 @@ script = ExtResource( 1 )
 allow_drawing = false
 paused = false
 
+[node name="Bg" type="Sprite" parent="."]
+position = Vector2( -770.854, -111.898 )
+texture = ExtResource( 9 )
+flip_h = true
+
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="DrawLine" type="Line2D" parent="."]
@@ -169,5 +176,10 @@ text = "It's just a silly bunny..|Keep it alive, please.."
 position = Vector2( -948.457, -281.842 )
 show_after = 3
 hide_after = 8
-text = "... that was close"
+text = "That was close"
+
+[node name="Cloud" parent="." instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 0.32549 )
+position = Vector2( -1226.05, -674.057 )
+scale = Vector2( 0.337945, 0.403447 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
