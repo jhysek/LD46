@@ -14,6 +14,7 @@ func _on_Button_mouse_exited():
 func _on_Button_pressed():
 	$Sfx/Click.play()
 	get_tree().change_scene("res://Levels/Level00.tscn")
+	Music.play()
 	
 	
 func failed():

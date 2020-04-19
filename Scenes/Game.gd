@@ -63,9 +63,6 @@ func reached_exit():
 		next_level()
 
 func _input(event):	
-	if ended and Input.is_action_just_pressed("ui_accept"):
-		LevelSwitcher.start_level()
-		
 	if paused and Input.is_action_just_released("ui_accept"):
 		start_game()
 

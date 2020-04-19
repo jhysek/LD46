@@ -143,7 +143,7 @@ margin_top = -329.59
 margin_right = 206.305
 margin_bottom = -280.59
 custom_fonts/font = SubResource( 5 )
-text = "Press SPACE to start"
+text = "Press [SPACE] to start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -159,7 +159,7 @@ margin_top = -311.418
 margin_right = 210.131
 margin_bottom = -262.418
 custom_fonts/font = SubResource( 5 )
-text = "Press SPACE  to restart"
+text = "Press [R] to restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }

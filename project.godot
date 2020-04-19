@@ -26,6 +26,7 @@ enable_audio_input=true
 [autoload]
 
 LevelSwitcher="*res://LevelSwitcher.gd"
+Music="*res://Scenes/Music.tscn"
 
 [display]
 
