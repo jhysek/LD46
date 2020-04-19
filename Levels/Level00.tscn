@@ -206,7 +206,7 @@ hide_after = 5
 text = "Once upon a time, |there was a bunny..."
 
 [node name="Label2" parent="." instance=ExtResource( 4 )]
-position = Vector2( -617.608, -414.101 )
+position = Vector2( -624.695, -709.743 )
 show_after = 7
 text = "... and it only wanted to go home"
 

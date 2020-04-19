@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Components/Exit/Exit.png" type="Texture" id=1]
 [ext_resource path="res://Components/Exit/Exit.gd" type="Script" id=2]
@@ -6,15 +6,52 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 43.0484
 
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.704564 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.9 ), Vector2( 1, 1 ), Vector2( 1, 0.9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -2.31162, 2.3 ]
+}
+
 [node name="Exit" type="Area2D"]
 position = Vector2( -113.943, -302.572 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -236.567 ]
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.95752, 5.74503 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 4.74097, -81.5447 )
+position = Vector2( -4.06835, 61.2641 )
 texture = ExtResource( 1 )
+offset = Vector2( 8.80932, -142.809 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+playback_speed = 0.5
+anims/Idle = SubResource( 2 )
 [connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]
