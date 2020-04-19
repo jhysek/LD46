@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Components/Exit/Exit.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Components/Stone/Stone.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/Fadelabel/Label.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Components/DeathZone/DeathZone.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/bg.png" type="Texture" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -122,6 +123,11 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="Bg" type="Sprite" parent="."]
+position = Vector2( -671.85, -161.477 )
+scale = Vector2( -1.24217, 0.839848 )
+texture = ExtResource( 11 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 

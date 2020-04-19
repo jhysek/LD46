@@ -58,20 +58,19 @@ func _physics_process(delta):
 		prevx = position.x
 		turntimer += delta
 		
-	print(prevx)
-	print(position.x)
 	if turntimer > 0.5:
 		turntimer = 0
 		scale.x *= -1
 		direction *= -1
 	
 func die():
-	$AnimationPlayer.play("Death")
-	var ghost = Ghost.instance()
-	get_parent().add_child(ghost)
-	ghost.position = position
-	dead = true	
-	get_node("/root/Game/AnimationPlayer").play("RestartLabel")
+	if not dead:
+		dead = true
+		$AnimationPlayer.play("Death")
+		var ghost = Ghost.instance()
+		get_parent().add_child(ghost)
+		ghost.position = position
+		get_node("/root/Game").failed()
 	
 func dissolve():
 	$AnimationPlayer.play("Dissolve")

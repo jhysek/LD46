@@ -183,7 +183,7 @@ paused = false
 [node name="DrawLine" type="Line2D" parent="."]
 
 [node name="Cloud" parent="." instance=ExtResource( 8 )]
-position = Vector2( -330.485, -540.213 )
+position = Vector2( -1325.74, -556.413 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 11 )

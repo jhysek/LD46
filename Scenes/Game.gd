@@ -26,8 +26,10 @@ func _ready():
 		
 	else:
 		start_game(false)
-		
 	set_process_input(true)
+
+
+
 
 func start_game(start_anim = true):
 	if start_anim:
@@ -43,6 +45,14 @@ func start_game(start_anim = true):
 	if has_node("Labels"):
 		for label in $Labels.get_children():
 			label.start()
+		
+		
+func failed():
+	$AnimationPlayer.play("RestartLabel")
+	if has_node("Players"):
+		for player in $Players.get_children():
+			if player.is_in_group("Player") and !player.dead:
+				player.pause()
 		
 func next_level():
 	$AnimationPlayer.play("NextLevel")
