@@ -204,7 +204,7 @@ smoothing_enabled = true
 position = Vector2( -1207.88, -310.829 )
 show_after = 2
 hide_after = 6
-text = "Bunny was fluffy,|but not very clever..."
+text = "Bunny is fluffy,|but not very clever..."
 
 [node name="Label2" parent="." instance=ExtResource( 4 )]
 position = Vector2( -778.591, -426.251 )

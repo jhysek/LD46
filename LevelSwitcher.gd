@@ -5,11 +5,18 @@ var levels = [
 	"res://Levels/Level00.tscn",
 	"res://Levels/Level01.tscn",
 	"res://Levels/Level02.tscn",
-	"res://Scenes/Menutscn"
+	"res://Levels/Level03.tscn",
+	"res://Scenes/Menu.tscn"
 	]
+	
+func _ready():
+	set_process_input(true)
+	
+func _input(event):
+	if Input.is_action_just_released("ui_restart"):
+		restart_level()
 
 func restart_level():
-	print("LOADING LEVEL " + levels[current_level])
 	get_tree().change_scene(levels[current_level])
 	
 func next_level():
