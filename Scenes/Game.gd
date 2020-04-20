@@ -25,6 +25,9 @@ func _ready():
 		else:
 			$Player.pause()
 		
+		if has_node("Stones"):
+			for stone in $Stones.get_children():
+				stone.gravity_scale = 0
 	else:
 		start_game(false)
 	set_process_input(true)
@@ -41,6 +44,12 @@ func start_game(start_anim = true):
 	else:
 		$Player.go()
 			
+	
+	if has_node("Stones"):
+		for stone in $Stones.get_children():
+			stone.gravity_scale = 30
+			stone.apply_impulse(Vector2(0,0), Vector2(0, -1))
+				
 	if has_node("Labels"):
 		for label in $Labels.get_children():
 			label.start()

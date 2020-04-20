@@ -11,7 +11,7 @@ var levels = [
 	"res://Levels/Level06.tscn",
 	"res://Levels/Level07.tscn",
 	"res://Levels/Level08.tscn",
-	"res://Scenes/Menu.tscn"
+	"res://Scenes/Finished.tscn"
 	]
 	
 func _ready():
@@ -25,6 +25,9 @@ func restart_level():
 	get_tree().reload_current_scene()
 	
 func start_level():
+	if current_level == 5:
+		 Music.volume_db = -10
+		
 	get_tree().change_scene(levels[current_level])
 	
 func next_level():
